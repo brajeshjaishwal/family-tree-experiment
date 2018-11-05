@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import FamilyMember from './FamilyMember'
-import {List} from 'semantic-ui-react'
 
 class FamilyMemberChildren extends Component {
     render() {

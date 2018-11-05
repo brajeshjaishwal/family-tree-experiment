@@ -24,14 +24,10 @@ class FamilyMember extends Component {
         this.setState({dialogVisible: false});
     }
 
-    handleExpand = () => {
-        if(this.state.expanded) {
-            //collapse
-            this.setState({expanded: false})
-        } else {
-            //expand
-            this.setState({expanded: true})
-        }
+    handleExpand = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.setState({expanded: !this.state.expanded})
     }
 
     addDescendant = (e) => {
@@ -76,7 +72,7 @@ class FamilyMember extends Component {
                     />
                     <MemberInfoDialog
                         dialogVisible={this.state.dialogVisible}
-                        onSave={this.props.onUpdate}
+                        onAdd={this.props.onAdd}
                         showDialog={this.showDialog}
                         hideDialog={this.hideDialog}
                         member={this.props.member}

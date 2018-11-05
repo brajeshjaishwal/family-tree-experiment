@@ -10,7 +10,7 @@ class MemberInfoDialog extends Component {
             key: this.props.member.key,
             name: this.props.member.name,
             relation: this.props.member.relation,
-            parent: this.props.member.parent,
+            parent: this.props.member.key,
         };
     }
     handleChange = (e) => {
@@ -22,25 +22,21 @@ class MemberInfoDialog extends Component {
     }
 
     saveAndClose = () => {
+        let {key, name, relation, parent} = this.state
+        this.props.onAdd({key, name, relation, parent})
         this.props.hideDialog();
-        this.props.onSave({
-            "key": this.state.key,
-            "name" : this.state.name,
-            "relation" : this.state.relation,
-            "parent" : this.state.parent,
-        })
     }
 
     render() {
         return (
-            <Modal open={this.props.dialogVisible} onHide={this.close}>
-                <Modal.Header closeButton>
-                    <Header>Add Family Member</Header>
+            <Modal open={this.props.dialogVisible}>
+                <Modal.Header>
+                    <Header>Family member information</Header>
                 </Modal.Header>
                 <Modal.Content>
                     <Form>
                         <Form.Input
-                            naem='name'
+                            name='name'
                             label='Name'
                             value={this.state.name}
                             placeholder="Enter name"
