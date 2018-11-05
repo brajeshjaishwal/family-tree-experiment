@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Form, Button, Modal, Header } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 
-class AddDescendantDialog extends Component {
+class MemberInfoDialog extends Component {
 
     constructor(props){
         super(props);
@@ -32,41 +32,36 @@ class AddDescendantDialog extends Component {
     }
 
     render() {
-
         return (
-        <div className="AddDescendantDialog">
-            <Modal show={this.props.dialogVisible} onHide={this.close}>
+            <Modal open={this.props.dialogVisible} onHide={this.close}>
                 <Modal.Header closeButton>
                     <Header>Add Family Member</Header>
                 </Modal.Header>
                 <Modal.Content>
                     <Form>
-                        <Form.Group>
-                            <Form.Input
-                                naem='name'
-                                label="First Name"
-                                value={this.state.name}
-                                placeholder="Enter Name"
-                                onChange={this.handleChange}
-                            />
-                            <Form.Input
-                                name='relation'
-                                label="Relation"
-                                value={this.state.relation}
-                                placeholder="What is the relation"
-                                onChange={this.handleChange}
-                            />
-                        </Form.Group>
+                        <Form.Input
+                            naem='name'
+                            label='Name'
+                            value={this.state.name}
+                            placeholder="Enter name"
+                            onChange={this.handleChange}
+                        />
+                        <Form.Input
+                            name='relation'
+                            label='Relation'
+                            value={this.state.relation}
+                            placeholder="Enter relation"
+                            onChange={this.handleChange}
+                        />
                     </Form>
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button type="submit" primary onClick={this.saveAndClose}>Save & Close</Button>
+                    <Button type="submit" primary onClick={this.saveAndClose}>Save And Close</Button>
                     <Button onClick={this.close}>Close</Button>
                 </Modal.Actions>
             </Modal>
-        </div>
         );
     }
 }
 
-export default AddDescendantDialog
+export default MemberInfoDialog

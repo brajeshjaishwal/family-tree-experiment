@@ -6,7 +6,6 @@ class FamilyContainer extends Component {
 
   constructor(props){
     super(props);
-
       if( localStorage.getItem('family') != null ){
         //console.log("from storage",JSON.parse(localStorage.getItem('family')));
         this.state = {
@@ -16,7 +15,7 @@ class FamilyContainer extends Component {
         this.state = {
           family: [{
             key: uuidv4(),
-            name: "",
+            name: `Family`,
             relation: "",
             parent: 0
           }]

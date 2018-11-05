@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import FamilyMember from './FamilyMember'
 import {List} from 'semantic-ui-react'
 
-class FamilyMemberDescendants extends Component {
+class FamilyMemberChildren extends Component {
     render() {
         return (
         (
@@ -27,4 +27,4 @@ class FamilyMemberDescendants extends Component {
     }
 }
 
-export default FamilyMemberDescendants
+export default FamilyMemberChildren

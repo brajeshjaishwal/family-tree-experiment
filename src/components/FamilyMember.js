@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import FamilyMemberDescendants from './FamilyMemberDescendants'
-import AddDescendantDialog from './AddDescendantDialog'
+import FamilyMemberChildren from './FamilyMemberChildren'
+import MemberInfoDialog from './MemberInfoDialog'
 import { Button, Grid, List, Card } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 
@@ -61,20 +61,20 @@ class FamilyMember extends Component {
                                     </Grid.Column>
                                     <Grid.Column >{this.props.member.name}</Grid.Column>
                                     <Grid.Column>
-                                        <Button onClick={this.addDescendant} 
+                                        <Button onClick={this.showDialog} 
                                                 circular size='mini'>Add</Button>
                                     </Grid.Column>
                                 </Grid.Row>
                             </Grid>
                         </Card.Content>
                     </Card>
-                    <FamilyMemberDescendants
+                    <FamilyMemberChildren
                         expanded={this.state.expanded}
                         descendants={this.props.descendants}
                         getDescendantsOfUUID={this.props.getDescendantsOfUUID}
                         onAdd={this.props.onAdd}
                     />
-                    <AddDescendantDialog
+                    <MemberInfoDialog
                         dialogVisible={this.state.dialogVisible}
                         onSave={this.props.onUpdate}
                         showDialog={this.showDialog}
