@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import FamilyMember from './FamilyMember'
+import {List} from 'semantic-ui-react'
 
 class FamilyMemberDescendants extends Component {
     render() {
@@ -8,7 +9,7 @@ class FamilyMemberDescendants extends Component {
             this.props.descendants &&
             this.props.descendants.length>0
         )?
-        <ul>
+        <ul inverted={this.props.expanded}>
                 {this.props.descendants.map(member=>
                     <FamilyMember
                         key={member.key}

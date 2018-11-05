@@ -39,8 +39,8 @@ class FamilyMember extends Component {
         e.stopPropagation();
         console.log("adding new descendant for key: ",this.props.member.key)
         const member = {
-            name: "",
-            relation: "",
+            name: "temp",
+            relation: "temp relation",
             parent: this.props.member.key
         }
         this.props.onAdd(member);
@@ -54,20 +54,22 @@ class FamilyMember extends Component {
                             <Grid columns='3'>
                                 <Grid.Row>
                                     <Grid.Column>
-                                        <Button 
-                                            icon={ this.state.expanded ? 'minus' : 'plus'} 
-                                            size='mini' 
-                                            circular 
-                                            onClick={this.handleExpand}
-                                            />
+                                        <Button icon={ this.state.expanded ? 'minus' : 'plus'} 
+                                                size='mini' 
+                                                circular 
+                                                onClick={this.handleExpand} />
                                     </Grid.Column>
                                     <Grid.Column >{this.props.member.name}</Grid.Column>
-                                    <Grid.Column><Button floated='right' onClick={this.addDescendant} circular size='mini'>Add</Button></Grid.Column>
+                                    <Grid.Column>
+                                        <Button onClick={this.addDescendant} 
+                                                circular size='mini'>Add</Button>
+                                    </Grid.Column>
                                 </Grid.Row>
                             </Grid>
                         </Card.Content>
                     </Card>
                     <FamilyMemberDescendants
+                        expanded={this.state.expanded}
                         descendants={this.props.descendants}
                         getDescendantsOfUUID={this.props.getDescendantsOfUUID}
                         onAdd={this.props.onAdd}
