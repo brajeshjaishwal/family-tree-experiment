@@ -9,7 +9,8 @@ class FamilyMember extends Component {
     constructor(props){
         super(props);
         this.state = {
-            dialogVisible: false
+            dialogVisible: false,
+            expanded: false,
         }
     }
 
@@ -23,13 +24,23 @@ class FamilyMember extends Component {
         this.setState({dialogVisible: false});
     }
 
+    handleExpand = () => {
+        if(this.state.expanded) {
+            //collapse
+            this.setState({expanded: false})
+        } else {
+            //expand
+            this.setState({expanded: true})
+        }
+    }
+
     addDescendant = (e) => {
         e.preventDefault();
         e.stopPropagation();
         console.log("adding new descendant for key: ",this.props.member.key)
         const member = {
-            firstName: "",
-            lastName: "",
+            name: "",
+            relation: "",
             parent: this.props.member.key
         }
         this.props.onAdd(member);
@@ -42,8 +53,15 @@ class FamilyMember extends Component {
                         <Card.Content>
                             <Grid columns='3'>
                                 <Grid.Row>
-                                    <Grid.Column><Button icon='plus' size='mini' circular></Button></Grid.Column>
-                                    <Grid.Column >{this.props.member.firstName}</Grid.Column>
+                                    <Grid.Column>
+                                        <Button 
+                                            icon={ this.state.expanded ? 'minus' : 'plus'} 
+                                            size='mini' 
+                                            circular 
+                                            onClick={this.handleExpand}
+                                            />
+                                    </Grid.Column>
+                                    <Grid.Column >{this.props.member.name}</Grid.Column>
                                     <Grid.Column><Button floated='right' onClick={this.addDescendant} circular size='mini'>Add</Button></Grid.Column>
                                 </Grid.Row>
                             </Grid>

@@ -16,8 +16,7 @@ class FamilyContainer extends Component {
         this.state = {
           family: [{
             key: uuidv4(),
-            firstName: "",
-            lastName: "",
+            name: "",
             relation: "",
             parent: 0
           }]

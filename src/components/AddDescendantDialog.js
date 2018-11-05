@@ -8,8 +8,7 @@ class AddDescendantDialog extends Component {
         super(props);
         this.state = {
             key: this.props.member.key,
-            firstName: this.props.member.firstName,
-            lastName: this.props.member.lastName,
+            name: this.props.member.name,
             relation: this.props.member.relation,
             parent: this.props.member.parent,
         };
@@ -26,8 +25,7 @@ class AddDescendantDialog extends Component {
         this.props.hideDialog();
         this.props.onSave({
             "key": this.state.key,
-            "firstName" : this.state.firstName,
-            "lastName" : this.state.lastName,
+            "name" : this.state.name,
             "relation" : this.state.relation,
             "parent" : this.state.parent,
         })
@@ -45,16 +43,14 @@ class AddDescendantDialog extends Component {
                     <Form>
                         <Form.Group>
                             <Form.Input
-                                id="firstName"
-                                type="text"
+                                naem='name'
                                 label="First Name"
-                                value={this.state.firstName}
-                                placeholder="Enter First Name"
+                                value={this.state.name}
+                                placeholder="Enter Name"
                                 onChange={this.handleChange}
                             />
                             <Form.Input
-                                id="lastName"
-                                type="text"
+                                name='relation'
                                 label="Relation"
                                 value={this.state.relation}
                                 placeholder="What is the relation"
