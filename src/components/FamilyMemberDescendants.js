@@ -7,21 +7,22 @@ class FamilyMemberDescendants extends Component {
         return (
         (
             this.props.descendants &&
-            this.props.descendants.length>0
+            this.props.descendants.length>0 &&
+            this.props.expanded
         )?
-        <ul inverted={this.props.expanded}>
-                {this.props.descendants.map(member=>
-                    <FamilyMember
-                        key={member.key}
-                        member={member}
-                        parent={member.parent}
-                        getDescendantsOfUUID={this.props.getDescendantsOfUUID}
-                        descendants={this.props.getDescendantsOfUUID(member.key)}
-                        onAdd={this.props.onAdd}
-                    />
-                )}
-        </ul>
-        :null
+            <ul>
+                    {this.props.descendants.map(member=>
+                        <FamilyMember
+                            key={member.key}
+                            member={member}
+                            parent={member.parent}
+                            getDescendantsOfUUID={this.props.getDescendantsOfUUID}
+                            descendants={this.props.getDescendantsOfUUID(member.key)}
+                            onAdd={this.props.onAdd}
+                        />
+                    )}
+            </ul> :
+            null
         );
     }
 }
